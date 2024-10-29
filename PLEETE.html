@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COLOR VIEWER</title>
+  </head>
+  <body>
+    <div class="plette" id="plette">
+      <div class="plette-input">
+        COLOR：<input type="text" id="color-input" placeholder="#000000" />
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  document.getElementById("color-input").addEventListener("change", (e) => {
+    const target = e.target;
+    const value = target.value.split("#")[1].trim();
+    const isHexadecimal = (value) => /^[0-9a-fA-F]+$/.test(value);
+    console.log(value.length);
+    if ((value.length == 3 || value == 6) && isHexadecimal(value)) {
+      document.getElementById("plette").style.backgroundColor = "#" + value;
+    }
+  });
+</script>
+
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  .plette {
+    background-color: #626a56;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  .plette-input {
+    color: white;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding: 1rem;
+  }
+  input {
+    border: 0;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    padding-left: 0.5rem;
+  }
+</style>
